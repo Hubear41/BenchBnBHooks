@@ -6,7 +6,7 @@ const BenchIndex = props => {
     useEffect( () => {
         props.fetchBenches();
     }, []);
-
+    
     const { benches } = props;
     const benchItems = benches.map( bench => {
         return <BenchIndexItem bench={bench} />;

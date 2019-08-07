@@ -4,7 +4,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import LoginForm from './session_forms/login_form_container';
 import SignupForm from './session_forms/signup_form_container';
-import SearchIndex from './bench_index/search';
+import SearchIndex from './bench_index/search_container';
 const App = () => (
     <div className="benchbnb-content">
         <header className="greeting-header">
