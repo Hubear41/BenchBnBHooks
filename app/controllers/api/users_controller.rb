@@ -6,13 +6,13 @@ class Api::UsersController < ApplicationController
             login!(@user)
             render :show
         else
-            render json: @user.errors.full_messages
+            render json: "Username already exists", status: 404
         end
     end
 
     private
 
     def user_params
-        params.permit(:user).require(:username, :password)
+        params.require(:user).permit(:username, :password)
     end
 end
