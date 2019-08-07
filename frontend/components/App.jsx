@@ -5,8 +5,8 @@ import LoginForm from './session_forms/login_form_container';
 import SignupForm from './session_forms/signup_form_container';
 
 const App = () => (
-    <div>
-        <header>
+    <div className="benchbnb-content">
+        <header className="greeting-header">
             <h1>Bench BnB with Hooks</h1>
             <GreetingContainer />
         </header>

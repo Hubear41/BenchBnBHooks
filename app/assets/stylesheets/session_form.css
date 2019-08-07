@@ -1,0 +1,25 @@
+.session-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 20vh;
+}
+
+.session-form input[type=text], 
+.session-form input[type=password] {
+    outline: none;
+    font-size: 15px;
+}
+
+.session-form-submit {
+    width: 100px;
+    color: blueviolet;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 10px 20px;
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    background-color: rgb(170, 223, 255);
+}

@@ -23,7 +23,11 @@ const Greeting = (props) => {
                             </button> );
     }
 
-    return greetingBtns;
+    return (
+        <div className="greeting-btns">
+            {greetingBtns}
+        </div>
+    );
 };
 
 export default Greeting;

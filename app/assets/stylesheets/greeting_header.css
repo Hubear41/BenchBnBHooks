@@ -1,0 +1,24 @@
+.greeting-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+}
+
+.greeting-header h1 {
+    margin: 10px;
+}
+
+.greeting-btns {
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.greeting-btn {
+    text-decoration: none;
+    font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: blueviolet
+} 
