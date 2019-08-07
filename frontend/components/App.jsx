@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import LoginForm from './session_forms/login_form_container';
 import SignupForm from './session_forms/signup_form_container';
@@ -10,9 +11,9 @@ const App = () => (
             <h1>Bench BnB with Hooks</h1>
             <GreetingContainer />
         </header>
-
-        <Route path="/signup" component={SignupForm} />
-        <Route path="/login" component={LoginForm} />
+        
+        <AuthRoute path="/signup" component={SignupForm} />
+        <AuthRoute path="/login" component={LoginForm} />
     </div>
 );
 

@@ -6,7 +6,24 @@ import { login } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
-    const store = configureStore();
+
+    let store;
+    if ( window.currentUser) {
+        const preLoadedState = {
+            entities: {
+                users: { [window.currentUser.id]: window.currentUser },
+            },
+            session: {
+                id: window.currentUser.id,
+            },
+        };
+
+        store = configureStore(preLoadedState);
+        delete window.currentUser;
+    } else {
+        store = configureStore();
+    }
+
 
     // remove these in production
     window.getState = store.getState;
