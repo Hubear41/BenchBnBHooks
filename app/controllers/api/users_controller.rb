@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
             login!(@user)
             render :show
         else
-            render json: "Username already exists", status: 404
+            render json: ["Username already exists"], status: 404
         end
     end
 
