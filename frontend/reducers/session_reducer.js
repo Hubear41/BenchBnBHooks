@@ -2,7 +2,7 @@ import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_ac
 
 const defaultState = {
     id: null
-}
+};
 
 const sessionReducer = (state = defaultState, action) => {
     switch(action.type) {

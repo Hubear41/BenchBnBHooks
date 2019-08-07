@@ -12,6 +12,13 @@
     font-size: 15px;
 }
 
+.session-form-error-list {
+    display: flex;
+    flex-direction: column;
+    color: rgb(170, 0, 0);
+    list-style: none;
+}
+
 .session-form-submit {
     width: 100px;
     color: blueviolet;

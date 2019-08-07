@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 const SessionForm = props => {
@@ -11,12 +11,32 @@ const SessionForm = props => {
     const [username, updateUsername] = useState("");
     const [password, updatePassword] = useState("");
 
+    // removes error messages if navigating somewhere else
+    useEffect(() => {
+        return () => props.clearErrors();
+    }, []);
 
     const handleSubmit = e => {
         e.preventDefault();
-        const user = { username, password };
-        debugger
-        processForm(user);
+
+        const errors = [];
+
+        if (password.length <= 0) {
+            errors.push("Password can't be blank.");
+        } else if ( password.length < 6 ) {
+            errors.push("Password is too short");
+        } 
+         
+        if ( username.length <= 0 ) {
+            errors.push("Username can't be blank.");
+        } 
+
+        if ( errors.length > 0 ) {
+            props.receiveErrors(errors);
+        } else {
+            const user = { username, password };
+            processForm(user);
+        }
     }
 
     const handleChange = field => {
@@ -42,8 +62,8 @@ const SessionForm = props => {
     let errorMessages = null;
     if ( errors.length > 0 ) {
         errorMessages = (
-            <ul className="session-form-errors-list">
-                {errors}
+            <ul className="session-form-error-list">
+                {errors.map( (err, idx) => <li key={idx}>{err}</li>)}
             </ul>
         );
     }
