@@ -4,6 +4,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import LoginForm from './session_forms/login_form_container';
 import SignupForm from './session_forms/signup_form_container';
+import BenchIndex from './bench_index/bench_index_container';
 
 const App = () => (
     <div className="benchbnb-content">
@@ -14,6 +15,7 @@ const App = () => (
         
         <AuthRoute path="/signup" component={SignupForm} />
         <AuthRoute path="/login" component={LoginForm} />
+        <Route exact path="/" component={BenchIndex} />
     </div>
 );
 
