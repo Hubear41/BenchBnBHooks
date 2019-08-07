@@ -9,7 +9,7 @@ const BenchIndex = props => {
     
     const { benches } = props;
     const benchItems = benches.map( bench => {
-        return <BenchIndexItem bench={bench} />;
+        return <BenchIndexItem bench={bench} key={bench.id} />;
     })
 
     return (
