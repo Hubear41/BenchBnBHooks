@@ -19,3 +19,8 @@
      flex-direction: column;
      align-items: center;
  }
+
+ #map-container {
+     height: 500px;
+     width: 500px;
+ }

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BenchIndex from './bench_index';
+import Search from './search';
 import { fetchBenches } from '../../actions/bench_actions';
 
 const msp = ({ entities }) => ({
@@ -8,6 +8,7 @@ const msp = ({ entities }) => ({
 
 const mdp = dispatch => ({
     fetchBenches: () => dispatch(fetchBenches()),
-});
+})
 
-export default connect(msp, mdp)(BenchIndex);
+export default connect(msp, mdp)(Search);
+
