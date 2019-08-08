@@ -12,7 +12,7 @@ const BenchMap = props => {
         // set the map to show SF
         const mapOptions = {
             center: { lat: 37.7758, lng: -122.435 }, // this is SF
-            zoom: 13
+            zoom: 13,
         };
 
         // wrap this.mapNode in a Google Map
@@ -21,12 +21,28 @@ const BenchMap = props => {
         markerManagerRef.current.updateMarkers(benches);
     });
 
+    // add event listener for map bounds
+    useEffect(() => {
+        const getNewBounds = map => {
+            const latLng = map.getBounds();
+            debugger
+            const northEast = latLng.getNorthEast();
+            const southWest = latLng.getSouthWest();
+
+            return { northEast, southWest };
+        }
+        debugger
+        const idleListener = mapRef.current.addListener('idle', props.updateBounds(getNewBounds(mapRef.current)));
+
+        return () => mapRef.current.removeListener(idleListener);
+    }, []);
+
     // updates marker manager whenever benches change
     useEffect( () => {
         if ( markerManagerRef.current !== null) {
             markerManagerRef.current.updateMarkers(benches);
         }
-    }, [benches])
+    }, [benches]);
 
     return (
         <div id="map-container" ref={map => mapNodeRef.current = map}></div> // put back ref after incorporating maps
