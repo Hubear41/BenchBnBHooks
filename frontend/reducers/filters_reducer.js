@@ -1,4 +1,4 @@
-import { UPDATE_BOUNDS } from './filters_reducer';
+import { UPDATE_BOUNDS } from '../actions/filter_actions';
 
 const filtersReducer = (state = {}, action) => {
     Object.freeze(state);

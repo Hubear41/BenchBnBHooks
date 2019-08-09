@@ -7,6 +7,6 @@ const recieveBenches = benches => ({
     benches,
 });
 
-export const fetchBenches = () => dispatch => {
-    return BenchAPI.fetchBenches().then( benches => dispatch(recieveBenches(benches)) );
+export const fetchBenches = bounds => dispatch => {
+    return BenchAPI.fetchBenches(bounds).then( benches => dispatch(recieveBenches(benches)) );
 }

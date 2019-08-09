@@ -1,9 +1,14 @@
+.session-form-title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .session-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     height: 20vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .session-form input[type=text], 
@@ -19,14 +24,30 @@
     list-style: none;
 }
 
+.session-form-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .session-form-submit {
-    width: 100px;
+    min-width: 120px;
     color: blueviolet;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 500;
     font-size: 15px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border: 1px solid blueviolet;
     border-radius: 5px;
     background-color: rgb(170, 223, 255);
+}
+
+.session-redirect-message {
+    font-size: 15px;
+}
+
+.session-redirect-message a {
+    font-weight: 700;
+    text-decoration: none;
 }

@@ -10,6 +10,7 @@ const msp = state => ({
 
 const mdp = dispatch => ({
     processForm: user => dispatch(login(user)),
+    login: user => dispatch(login(user)),
     clearErrors: () => dispatch(clearErrors()),
     receiveErrors: errors => dispatch(receiveErrors(errors)),
 });

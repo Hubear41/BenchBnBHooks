@@ -39,6 +39,13 @@ const SessionForm = props => {
         }
     }
 
+    const handleGuestSubmit = e => {
+        e.preventDefault();
+
+        const user = { username: "admin", password: "password" };
+        props.login(user);
+    }
+
     const handleChange = field => {
         return e => {
             if ( field === 'username' ) {
@@ -74,7 +81,7 @@ const SessionForm = props => {
 
             {errorMessages}
 
-            <form onSubmit={handleSubmit} className="session-form">
+            <form className="session-form">
                 <label htmlFor="username">Username:
                     <input type="text"
                            id="username"  
@@ -88,9 +95,19 @@ const SessionForm = props => {
                            value={password}/>
                 </label>
 
-                <input  type="submit" 
+                <div className="session-form-btns">
+                    <button type="button"
                         className="session-form-submit"
-                        value={formType === 'LoginForm' ? "Log In" : "Sign Up"} />
+                        onClick={handleSubmit}>
+                            {formType === 'LoginForm' ? "Log In" : "Sign Up"}
+                        </button>
+                    <button type="button" 
+                            className="session-form-submit" 
+                            onClick={handleGuestSubmit}>
+                                Guest Login
+                            </button>
+                </div>
+                
 
                 <span className="session-redirect-message">{redirectMessage} {redirectoLink}</span>
             </form>

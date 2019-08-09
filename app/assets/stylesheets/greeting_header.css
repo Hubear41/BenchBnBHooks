@@ -11,14 +11,21 @@
 
 .greeting-btns {
     width: 10%;
+    min-width: 150px;
     display: flex;
     justify-content: space-between;
     margin: 10px;
 }
 
 .greeting-btn {
+    height: 30px;
+    box-sizing: border-box;
     text-decoration: none;
     font-weight: 600;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: blueviolet
+    color: blueviolet;
 } 
+
+.greeting-btn:hover {
+    border-bottom: 3px solid blueviolet;
+}

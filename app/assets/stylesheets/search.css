@@ -1,3 +1,6 @@
 .bench-index-wrapper {
     display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: calc(100vw - 40px);
 }

@@ -9,6 +9,5 @@ export const receiveBounds = bounds => ({
 
 export const updateBounds = bounds => (dispatch, getState) => {
     dispatch(receiveBounds(bounds));
-    debugger
     return fetchBenches(getState().ui.filters)(dispatch);
 };
