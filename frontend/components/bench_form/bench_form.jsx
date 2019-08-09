@@ -33,6 +33,7 @@ const BenchForm = props => {
                     <input type="number"
                            className="bench-form-input"
                            min="1"
+                           max="10"
                            onChange={e => updateSeats(e.target.value)}
                            value={seats}
                             />

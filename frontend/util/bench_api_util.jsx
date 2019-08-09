@@ -4,8 +4,8 @@ export const fetchBenches = filter => {
         url: "/api/benches",
         data: { 
             bounds: filter.bounds,
-            max_seating: filter.max_seating,
-            min_seating: filter.min_seating,
+            max_seating: filter.maxSeating,
+            min_seating: filter.minSeating,
         },
     });
 }

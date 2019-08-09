@@ -10,5 +10,6 @@ export const receiveFilter = (filter, value) => ({
 
 export const updateFilter = (filter, value) => (dispatch, getState) => {
     dispatch(receiveFilter(filter, value));
+    
     return fetchBenches(getState().ui.filters)(dispatch);
 };

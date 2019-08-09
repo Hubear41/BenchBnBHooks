@@ -1,0 +1,8 @@
+.filter-form:first-child label{
+    margin-right: 10px;
+}
+
+.filter-form input {
+    width: 30px;
+    text-align: right;
+}

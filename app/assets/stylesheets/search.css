@@ -4,3 +4,9 @@
     padding: 20px;
     width: calc(100vw - 40px);
 }
+
+.bench-list-and-filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
