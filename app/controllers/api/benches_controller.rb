@@ -1,12 +1,13 @@
 class Api::BenchesController < ApplicationController
     def index
+        debugger
         @benches = Bench.in_bounds(params[:bounds])
 
-        unless params[:max_seating].nil? && params[:max_seating] > 1
+        unless params[:max_seating] == 10;
             @benches = @benches.select { |bench| bench.seats <= params[:max_seating] }
         end
 
-        unless params[:min_seating].nil? && params[:min_seating] > 1
+        unless params[:min_seating] == 1
             @benches = @benches.select { |bench| bench.seats >= params[:min_seating] }
         end
 

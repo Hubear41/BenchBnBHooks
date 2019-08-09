@@ -1,8 +1,12 @@
-export const fetchBenches = bounds => {
+export const fetchBenches = filter => {
     return $.ajax({
         method: "GET",
         url: "/api/benches",
-        data: { bounds }
+        data: { 
+            bounds: filter.bounds,
+            max_seating: filter.max_seating,
+            min_seating: filter.min_seating,
+        },
     });
 }
 

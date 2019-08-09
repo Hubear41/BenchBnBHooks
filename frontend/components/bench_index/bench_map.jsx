@@ -45,13 +45,10 @@ const BenchMap = props => {
             });
         }
 
-        const idleListener = mapRef.current.addListener('idle', () => props.updateBounds(getMapBounds(mapRef.current)));
-        const clickListener = mapRef.current.addListener('click', e => grabCoordinates(e));
-
-        // return () => {
-        //     mapRef.current.removeListener(idleListener);
-        //     mapRef.current.removeListener(clickListener);
-        // };
+        // update bounds whenever map is moved
+        mapRef.current.addListener('idle', () => props.updateFilter("bounds", getMapBounds(mapRef.current)));
+        // redirect to create form on click
+        mapRef.current.addListener('click', e => grabCoordinates(e));
     }, []);
 
     // updates marker manager whenever benches change
