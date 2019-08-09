@@ -7,45 +7,48 @@ const BenchMap = props => {
     const markerManagerRef = useRef();
     const { benches } = props;
 
-    // settings when map first mounts
-    useEffect( () => {
-        // set the map to show SF
-        const mapOptions = {
-            center: { lat: 37.7758, lng: -122.435 }, // this is SF
-            zoom: 13,
-        };
+    // add event listener for map bounds when component mounts
+    // useEffect(() => {
+    //     // set the map to show SF
+    //     const mapOptions = {
+    //         center: { lat: 37.7758, lng: -122.435 }, // this is SF
+    //         zoom: 13,
+    //     };
 
-        // wrap this.mapNode in a Google Map
-        mapRef.current = new google.maps.Map(mapNodeRef.current, mapOptions);
-        markerManagerRef.current = new MarkerManager(mapRef);
-        markerManagerRef.current.updateMarkers(benches);
-    });
+    //     // wrap this.mapNode in a Google Map
+    //     mapRef.current = new google.maps.Map(mapNodeRef.current, mapOptions);
+    //     markerManagerRef.current = new MarkerManager(mapRef.current);
+    //     markerManagerRef.current.updateMarkers(benches);
 
-    // add event listener for map bounds
-    useEffect(() => {
-        const getNewBounds = map => {
-            const latLng = map.getBounds();
-            debugger
-            const northEast = latLng.getNorthEast();
-            const southWest = latLng.getSouthWest();
+    //     const getMapBounds = map => {
+    //         const latLng = map.getBounds();
+    //         const northEast = {
+    //             lat: latLng.getNorthEast().lat(),
+    //             lng: latLng.getNorthEast().lng(),
+    //         };
+    //         const southWest = {
+    //             lat: latLng.getSouthWest().lat(),
+    //             lng: latLng.getSouthWest().lng(),
+    //         };
 
-            return { northEast, southWest };
-        }
-        debugger
-        const idleListener = mapRef.current.addListener('idle', props.updateBounds(getNewBounds(mapRef.current)));
+    //         return { northEast, southWest };
+    //     }
 
-        return () => mapRef.current.removeListener(idleListener);
-    }, []);
+    //     const idleListener = mapRef.current.addListener('idle', () => props.updateBounds(getMapBounds(mapRef.current)));
 
-    // updates marker manager whenever benches change
-    useEffect( () => {
-        if ( markerManagerRef.current !== null) {
-            markerManagerRef.current.updateMarkers(benches);
-        }
-    }, [benches]);
+    //     return () => mapRef.current.removeListener(idleListener);
+    // }, []);
+
+    // // updates marker manager whenever benches change
+    // useEffect( () => {
+    //     if ( markerManagerRef.current !== null) {
+    //         markerManagerRef.current.updateMarkers(benches);
+    //     }
+    // }, [benches]);
 
     return (
-        <div id="map-container" ref={map => mapNodeRef.current = map}></div> // put back ref after incorporating maps
+        // <div id="map-container" ref={map => mapNodeRef.current = map}></div> // put back ref after incorporating maps
+        <div id="map-container" style={{ background: "black"}}></div> // put back ref after incorporating maps
     );
 }
 

@@ -2,10 +2,11 @@ class Bench < ApplicationRecord
     validates :description, :lat, :lng, presence: true
 
     def self.in_bounds(bounds)
-        north = bounds.northEast.lat
-        east = bounds.northEast.lng
-        south = bounds.southWest.lat
-        west = bounds.sourthWest.lng
+        debugger
+        north = bounds[:northEast][:lat]
+        east = bounds[:northEast][:lng]
+        south = bounds[:southWest][:lat]
+        west = bounds[:southWest][:lng]
 
         Bench.where("benches.lat <= ? &&
                      benches.lat >= ? &&
