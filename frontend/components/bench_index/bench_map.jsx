@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { withRouter } from 'react-router-dom';
 import MarkerManager from '../../util/marker_manager';
 
 const BenchMap = props => {
@@ -34,9 +35,23 @@ const BenchMap = props => {
             return { northEast, southWest };
         }
 
-        const idleListener = mapRef.current.addListener('idle', () => props.updateBounds(getMapBounds(mapRef.current)));
+        const grabCoordinates = e => {
+            const lat = e.latLng.lat();
+            const lng = e.latLng.lng();
 
-        return () => mapRef.current.removeListener(idleListener);
+            props.history.push({
+                pathname: "benches/new",
+                search: `lat=${lat}&lng=${lng}`,
+            });
+        }
+
+        const idleListener = mapRef.current.addListener('idle', () => props.updateBounds(getMapBounds(mapRef.current)));
+        const clickListener = mapRef.current.addListener('click', e => grabCoordinates(e));
+
+        // return () => {
+        //     mapRef.current.removeListener(idleListener);
+        //     mapRef.current.removeListener(clickListener);
+        // };
     }, []);
 
     // updates marker manager whenever benches change
@@ -52,4 +67,4 @@ const BenchMap = props => {
     )
 }
 
-export default BenchMap;
+export default withRouter(BenchMap);

@@ -5,6 +5,8 @@ import GreetingContainer from './greeting/greeting_container';
 import LoginForm from './session_forms/login_form_container';
 import SignupForm from './session_forms/signup_form_container';
 import SearchIndex from './bench_index/search_container';
+import BenchForm from './bench_form/bench_form_container';
+
 const App = () => (
     <div className="benchbnb-content">
         <header className="greeting-header">
@@ -15,6 +17,7 @@ const App = () => (
         <AuthRoute path="/signup" component={SignupForm} />
         <AuthRoute path="/login" component={LoginForm} />
         <Route exact path="/" component={SearchIndex} />
+        <ProtectedRoute path ="/benches/new" component={BenchForm} />
     </div>
 );
 

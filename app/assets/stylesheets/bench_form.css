@@ -1,0 +1,14 @@
+.bench-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bench-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.bench-form-input {
+    margin-left: 10px;
+}

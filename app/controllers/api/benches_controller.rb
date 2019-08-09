@@ -18,6 +18,6 @@ class Api::BenchesController < ApplicationController
     private
 
     def bench_params
-        params.require(:bench).permit(:description, :lat, :lng);
+        params.require(:bench).permit(:description, :lat, :lng, :seats);
     end
 end
