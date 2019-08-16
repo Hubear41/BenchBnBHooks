@@ -7,13 +7,26 @@ const BenchMap = props => {
     const mapNodeRef = useRef();
     const markerManagerRef = useRef();
     const { benches } = props;
+    const position = benches.length === 1 
+        ? { lat: benches[0].lat, lng: benches[0].lng } 
+        : { lat: 37.7758, lng: -122.435 };
+
+    // adds click listeners to all google markers
+    const addListenersToMarkers = () => {
+        benches.forEach(bench => {
+            markerManagerRef.current.markers[bench.id].addListener("click", () => {
+                props.history.push(`/benches/${bench.id}`);
+            });
+        });
+    }
 
     // add event listener for map bounds when component mounts
     useEffect(() => {
         // set the map to show SF
         const mapOptions = {
-            center: { lat: 37.7758, lng: -122.435 }, // this is SF
+            center: position, // this is SF
             zoom: 13,
+            draggable: benches.length === 1 ? false : true,
         };
 
         // wrap this.mapNode in a Google Map
@@ -21,6 +34,7 @@ const BenchMap = props => {
         markerManagerRef.current = new MarkerManager(mapRef.current);
         markerManagerRef.current.updateMarkers(benches);
 
+        // get bounds from the google maps object
         const getMapBounds = map => {
             const latLng = map.getBounds();
             const northEast = {
@@ -35,6 +49,7 @@ const BenchMap = props => {
             return { northEast, southWest };
         }
 
+        // get coordinates from click and put them as a search query
         const grabCoordinates = e => {
             const lat = e.latLng.lat();
             const lng = e.latLng.lng();
@@ -46,15 +61,22 @@ const BenchMap = props => {
         }
 
         // update bounds whenever map is moved
-        mapRef.current.addListener('idle', () => props.updateFilter("bounds", getMapBounds(mapRef.current)));
-        // redirect to create form on click
-        mapRef.current.addListener('click', e => grabCoordinates(e));
+        mapRef.current.addListener('idle', () => {
+            props.updateFilter("bounds", getMapBounds(mapRef.current));
+            addListenersToMarkers();
+        });
+
+        if (benches.length > 1) {
+            // redirect to create form on click
+            mapRef.current.addListener('click', e => grabCoordinates(e));
+        }
     }, []);
 
     // updates marker manager whenever benches change
     useEffect( () => {
         if ( markerManagerRef.current !== null) {
             markerManagerRef.current.updateMarkers(benches);
+            addListenersToMarkers();
         }
     }, [benches]);
 

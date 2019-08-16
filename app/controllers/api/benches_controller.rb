@@ -16,6 +16,16 @@ class Api::BenchesController < ApplicationController
         render :index
     end
 
+    def show 
+        @bench = Bench.find(params[:id]);
+
+        if @bench 
+            render :show
+        else
+            render json: @bench.errors.full_messages
+        end
+    end
+
     def create
         @bench = Bench.new(bench_params);
 

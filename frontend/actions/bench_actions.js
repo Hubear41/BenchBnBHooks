@@ -11,12 +11,16 @@ const recieveBenches = benches => ({
 const receiveBench = bench => ({
     type: RECEIVE_BENCH,
     bench,
-})
+});
 
 export const createBench = bench => dispatch => {
     return BenchAPI.createBench(bench).then( bench => dispatch(receiveBench(bench)) );
-}
+};
 
 export const fetchBenches = bounds => dispatch => {
     return BenchAPI.fetchBenches(bounds).then( benches => dispatch(recieveBenches(benches)) );
-}
+};
+
+export const fetchBench = id => dispatch => {
+    return BenchAPI.fetchBench(id).then( bench => dispatch(receiveBench(bench)));
+};

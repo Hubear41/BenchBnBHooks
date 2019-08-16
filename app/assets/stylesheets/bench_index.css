@@ -3,3 +3,7 @@
     height: 100%;
     margin-left: 10vw;
 }
+
+.bench-index-list-item {
+    cursor: pointer;
+}

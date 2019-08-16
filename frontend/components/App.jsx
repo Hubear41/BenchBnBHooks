@@ -6,6 +6,7 @@ import LoginForm from './session_forms/login_form_container';
 import SignupForm from './session_forms/signup_form_container';
 import SearchIndex from './search/search_container';
 import BenchForm from './bench_form/bench_form_container';
+import BenchShow from './bench_show/bench_show_container';
 
 const App = () => (
     <div className="benchbnb-content">
@@ -18,6 +19,7 @@ const App = () => (
         <AuthRoute path="/login" component={LoginForm} />
         <Route exact path="/" component={SearchIndex} />
         <ProtectedRoute path ="/benches/new" component={BenchForm} />
+        <Route path="/benches/:benchId" component={BenchShow} />
     </div>
 );
 

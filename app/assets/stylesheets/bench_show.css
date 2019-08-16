@@ -1,0 +1,8 @@
+.bench-show-wrapper {
+    display: flex;
+}
+
+.bench-show-details {
+    display: flex;
+    flex-direction: column;
+}

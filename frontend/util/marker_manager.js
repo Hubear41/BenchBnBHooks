@@ -20,8 +20,6 @@ class MarkerManager {
                 this.createMarkerFromBench(bench);
             }
         });
-
-        debugger
     }
 
     createMarkerFromBench(bench) {
